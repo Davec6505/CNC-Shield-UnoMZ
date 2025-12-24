@@ -4,10 +4,11 @@ A CNC Shield expansion board designed for the Arduino UnoMZ, enabling 4-axis CNC
 
 ## Features
 
-- **4-Axis Support**: Control up to 4 stepper motors (X, Y, Z, and A axes)
+- **4-Axis Support**: Control up to 4 stepper motors (X, Y, Z, and A axes)*
+- **3-Axis + Spindle Mode**: Standard 3-axis CNC with spindle control*
 - **Stepper Driver Compatibility**: Compatible with A4988, DRV8825, and similar drivers
 - **Limit Switch Support**: 2 endstops per axis (6 total limit switches)
-- **Spindle Control**: Enable, direction, and PWM speed control
+- **Spindle Control**: Enable, direction, and PWM speed control*
 - **Coolant Control**: Dedicated coolant enable output
 - **Emergency Stop**: Hardware emergency stop input
 - **Probe Input**: Z-axis probe for auto-leveling and tool height measurement
@@ -15,7 +16,11 @@ A CNC Shield expansion board designed for the Arduino UnoMZ, enabling 4-axis CNC
 - **GRBL Compatible**: Designed to work with GRBL firmware
 - **Power Supply**: 12-36V DC input for stepper motors
 
+*Note: Pins D12 and D13 are shared between A-axis (4th axis) and spindle control. You must choose one mode in firmware configuration. Most CNC routers/mills use 3-axis + spindle mode.
+
 ## Pin Mapping
+
+### Core Functions (Always Available)
 
 | Function            | Arduino Pin | Description                    |
 |---------------------|-------------|--------------------------------|
@@ -25,27 +30,41 @@ A CNC Shield expansion board designed for the Arduino UnoMZ, enabling 4-axis CNC
 | Y_DIR               | D6          | Y-axis direction signal        |
 | Z_STEP              | D4          | Z-axis step signal             |
 | Z_DIR               | D7          | Z-axis direction signal        |
-| A_STEP              | D12         | A-axis step signal             |
-| A_DIR               | D13         | A-axis direction signal        |
 | STEPPER_ENABLE      | D8          | Enable all stepper drivers     |
 | X_LIMIT             | D9          | X-axis limit switch            |
 | Y_LIMIT             | D10         | Y-axis limit switch            |
 | Z_LIMIT             | D11         | Z-axis limit switch            |
-| SPINDLE_ENABLE      | D12         | Spindle enable signal          |
-| SPINDLE_DIRECTION   | D13         | Spindle direction control      |
-| SPINDLE_PWM         | D11         | Spindle speed (PWM)            |
 | COOLANT_ENABLE      | A3          | Coolant enable signal          |
 | PROBE               | A5          | Z-probe input                  |
+
+### Configuration A: 4-Axis Mode (Default)
+
+| Function            | Arduino Pin | Description                    |
+|---------------------|-------------|--------------------------------|
+| A_STEP              | D12         | A-axis (4th axis) step signal  |
+| A_DIR               | D13         | A-axis direction signal        |
+
+### Configuration B: 3-Axis + Spindle Mode
+
+| Function            | Arduino Pin | Description                    |
+|---------------------|-------------|--------------------------------|
+| SPINDLE_ENABLE      | D12         | Spindle enable signal          |
+| SPINDLE_DIRECTION   | D13         | Spindle direction control      |
+| SPINDLE_PWM         | D11         | Spindle speed (PWM - shared with Z_LIMIT) |
+
+**Note**: Pins D12 and D13 are shared between the A-axis (4th axis) and spindle control. You must choose one configuration in your GRBL firmware. Most users will use 3-axis + spindle mode for CNC routers/mills.
 
 ## Specifications
 
 - **Board Dimensions**: ~69mm x 54mm (Arduino Uno compatible)
 - **Input Voltage**: 12-36V DC (check your stepper driver limits)
 - **Logic Level**: 5V (Arduino compatible)
-- **Number of Axes**: 4 (X, Y, Z, A)
+- **Number of Axes**: 3 or 4 (configurable - see pin mapping)
+  - Standard Mode: 3 axes (X, Y, Z) + Spindle control
+  - Alternative Mode: 4 axes (X, Y, Z, A) - no spindle control
 - **Stepper Drivers**: 4 x A4988/DRV8825 compatible sockets
 - **Limit Switches**: 6 inputs (X+, X-, Y+, Y-, Z+, Z-)
-- **Firmware**: GRBL 1.1 or newer recommended
+- **Firmware**: GRBL 1.1 or newer recommended (standard 3-axis + spindle)
 
 ## Getting Started
 

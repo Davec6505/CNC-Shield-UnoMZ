@@ -2,7 +2,7 @@
 
 ## Arduino UnoMZ to CNC Shield Pin Mapping
 
-### Digital Pins
+### Core Digital Pins (Always Available)
 
 | Arduino Pin | CNC Function | Type | Description |
 |-------------|--------------|------|-------------|
@@ -18,8 +18,25 @@
 | D9 | X_LIMIT | INPUT | X-axis limit switch input |
 | D10 | Y_LIMIT | INPUT | Y-axis limit switch input |
 | D11 | Z_LIMIT | INPUT | Z-axis limit switch input |
-| D12 | A_STEP | OUTPUT | A-axis stepper step pulse / Spindle direction |
-| D13 | A_DIR | OUTPUT | A-axis stepper direction / Coolant enable |
+
+### Configurable Digital Pins (Choose One Configuration)
+
+**Configuration A: 4-Axis Mode**
+
+| Arduino Pin | CNC Function | Type | Description |
+|-------------|--------------|------|-------------|
+| D12 | A_STEP | OUTPUT | A-axis (4th axis) stepper step pulse |
+| D13 | A_DIR | OUTPUT | A-axis stepper direction |
+
+**Configuration B: 3-Axis + Spindle Mode (Most Common)**
+
+| Arduino Pin | CNC Function | Type | Description |
+|-------------|--------------|------|-------------|
+| D12 | SPINDLE_ENABLE | OUTPUT | Spindle enable signal |
+| D13 | SPINDLE_DIRECTION | OUTPUT | Spindle direction control |
+| D11 | SPINDLE_PWM | OUTPUT | Spindle speed control (shared with Z_LIMIT) |
+
+**Important**: D12 and D13 are shared between A-axis and spindle functions. You cannot use both simultaneously. Configure in GRBL firmware based on your machine requirements.
 
 ### Analog Pins
 
@@ -151,7 +168,7 @@ Limit switches should be normally open (NO) and close when triggered.
 
 ## GRBL Pin Assignments
 
-Standard GRBL pin configuration for this shield:
+### Configuration A: 3-Axis + Spindle (Standard GRBL v1.1)
 
 ```
 // Stepper motors
@@ -168,10 +185,10 @@ Standard GRBL pin configuration for this shield:
 #define Y_LIMIT_BIT   10  // D10
 #define Z_LIMIT_BIT   11  // D11
 
-// Spindle control
+// Spindle control (3-axis mode)
 #define SPINDLE_ENABLE_BIT    12  // D12
 #define SPINDLE_DIRECTION_BIT 13  // D13
-#define SPINDLE_PWM_BIT       11  // D11 (shared with Z limit)
+#define SPINDLE_PWM_BIT       11  // D11 (PWM output on OC2A)
 
 // Coolant
 #define COOLANT_FLOOD_BIT  A3  // A3
@@ -184,6 +201,41 @@ Standard GRBL pin configuration for this shield:
 #define FEED_HOLD_BIT   A1  // A1
 #define CYCLE_START_BIT A2  // A2
 ```
+
+**Note**: In 3-axis + spindle mode, D11 is shared between Z limit switch and spindle PWM. When using variable speed spindle control, you cannot use the Z limit switch on D11. Consider using only Z+ or Z- limit switch, or disable PWM spindle control if you need both Z limit switches.
+
+### Configuration B: 4-Axis Mode (GRBL Mega or Custom)
+
+```
+// Stepper motors (4 axes)
+#define X_STEP_BIT    2  // D2
+#define Y_STEP_BIT    3  // D3
+#define Z_STEP_BIT    4  // D4
+#define A_STEP_BIT    12 // D12 (4th axis)
+#define X_DIRECTION_BIT   5  // D5
+#define Y_DIRECTION_BIT   6  // D6
+#define Z_DIRECTION_BIT   7  // D7
+#define A_DIRECTION_BIT   13 // D13 (4th axis)
+#define STEPPERS_DISABLE_BIT 8  // D8
+
+// Limit switches
+#define X_LIMIT_BIT   9   // D9
+#define Y_LIMIT_BIT   10  // D10
+#define Z_LIMIT_BIT   11  // D11
+
+// Coolant
+#define COOLANT_FLOOD_BIT  A3  // A3
+
+// Probe
+#define PROBE_BIT  A5  // A5
+
+// Control signals
+#define RESET_BIT       A0  // A0
+#define FEED_HOLD_BIT   A1  // A1
+#define CYCLE_START_BIT A2  // A2
+```
+
+**Note**: Standard GRBL v1.1 does not support 4-axis on Arduino Uno. You need GRBL-Mega or a custom GRBL build for 4-axis support. In this mode, spindle control is not available.
 
 ## Electrical Specifications
 
