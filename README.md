@@ -4,7 +4,7 @@ A DSPCB (Double-Sided Printed Circuit Board) design for a CNC Shield compatible 
 
 ## About
 
-This is a design from DSPCB - a double-sided printed circuit board CNC Shield that extends the capabilities of the Arduino Uno for CNC (Computer Numerical Control) applications.
+This is a DSPCB design - a double-sided printed circuit board CNC Shield that extends the capabilities of the Arduino Uno for CNC (Computer Numerical Control) applications.
 
 ## Features
 
