@@ -1,0 +1,16 @@
+Forward Design Changes Report
+-----------------------------
+
+Report Written:     08:22 Wednesday, December 24, 2025
+Project Path:       C:\Users\davec\GIT\CNC-Shield-UnoMZ\CNC-Shield-UnoMZ.prj
+Design Path:        C:\Users\davec\GIT\CNC-Shield-UnoMZ\CNC-Shield-UnoMZ.pcb
+Design Title:       
+Created:            12/24/2025 8:20:07 AM
+Last Saved:         12/24/2025 8:21:23 AM
+Editing Time:       1 min
+Units:              thou (precision 0)
+
+The designs are the same, so no design changes to forward.
+
+
+End Of Report.
