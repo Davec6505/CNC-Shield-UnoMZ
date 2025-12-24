@@ -53,22 +53,29 @@ Steps per mm = (Motor Steps per Revolution × Microstepping) / (Belt Pitch × Pu
 ```
 
 ### Example Calculation for Belt Drive:
-- Motor: 200 steps/rev (1.8° stepper)
-- Microstepping: 1/8 (800 steps/rev)
+- Motor: 200 steps/rev (1.8° stepper motor)
+- Microstepping: 1/8 step (meaning 8 microsteps per full step)
+  - This gives: 200 steps/rev × 8 = 1600 microsteps/rev
 - Belt pitch: 2mm (GT2 belt)
 - Pulley: 20 teeth
 
 ```
 Steps per mm = (200 × 8) / (2 × 20) = 1600 / 40 = 40 steps/mm
+               ↑      ↑
+          full steps  microstepping multiplier (8 for 1/8 step)
 ```
 
 ### Example for Lead Screw:
-- Motor: 200 steps/rev
-- Microstepping: 1/8 (800 steps/rev)
+- Motor: 200 steps/rev (1.8° stepper motor)
+- Microstepping: 1/8 step (8 microsteps per full step)
+  - This gives: 200 steps/rev × 8 = 1600 microsteps/rev
 - Lead screw pitch: 8mm (T8 lead screw)
 
 ```
-Steps per mm = (200 × 8) / 8 = 200 steps/mm
+Steps per mm = (200 × 8) / 8 = 1600 / 8 = 200 steps/mm
+               ↑      ↑       ↑
+          full steps  1/8     lead screw pitch
+                    stepping
 ```
 
 ## Common Machine Configurations

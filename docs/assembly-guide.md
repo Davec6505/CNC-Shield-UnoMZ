@@ -148,18 +148,29 @@ Common options:
 
 ### Step 3: Set Current Limit (BEFORE INSTALLATION)
 
+⚠️ **Critical**: Always set current limit BEFORE connecting motors to prevent damage.
+
 **For A4988**:
 1. Connect driver to power supply (no motor yet)
-2. Measure voltage on Vref pin
-3. Calculate current: I = Vref / (8 × Rsense)
-4. For Rsense = 0.1Ω: I = Vref / 0.8
-5. Adjust potentiometer to desired current
+2. Measure voltage on Vref pin with multimeter
+3. Calculate current using formula: **I = Vref / (8 × Rsense)**
+4. For standard A4988 with Rsense = 0.1Ω:
+   - **I = Vref / (8 × 0.1) = Vref / 0.8**
+   - Example: If you want 1.0A motor current, set Vref to 0.8V
+   - Example: If you want 1.5A motor current, set Vref to 1.2V
+5. Adjust potentiometer to achieve desired Vref voltage
 
 **For DRV8825**:
-1. Similar process but formula is: I = Vref / (5 × Rsense)
-2. For Rsense = 0.1Ω: I = Vref × 2
+1. Similar process but formula is: **I = Vref / (5 × Rsense)**
+2. For standard DRV8825 with Rsense = 0.1Ω:
+   - **I = Vref / (5 × 0.1) = Vref / 0.5** or equivalently **I = Vref × 2**
+   - Example: If you want 1.0A motor current, set Vref to 0.5V
+   - Example: If you want 1.5A motor current, set Vref to 0.75V
+3. Adjust potentiometer to achieve desired Vref voltage
 
 **Target Current**: Set to 70-80% of motor rated current.
+- If motor is rated 2.0A, set current to 1.4-1.6A
+- Starting lower is safer; increase if motors are weak
 
 ### Step 4: Install Drivers on Shield
 

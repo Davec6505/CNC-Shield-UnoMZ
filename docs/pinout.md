@@ -36,7 +36,12 @@
 | D13 | SPINDLE_DIRECTION | OUTPUT | Spindle direction control |
 | D11 | SPINDLE_PWM | OUTPUT | Spindle speed control (shared with Z_LIMIT) |
 
-**Important**: D12 and D13 are shared between A-axis and spindle functions. You cannot use both simultaneously. Configure in GRBL firmware based on your machine requirements.
+⚠️ **Critical Pin Sharing Notes**:
+- **D12 and D13**: Shared between A-axis and spindle functions. Choose one mode in GRBL firmware.
+- **D11**: Shared between Z_LIMIT and SPINDLE_PWM. When using PWM spindle speed control, the Z-axis limit switch functionality is lost on this pin. Consider:
+  - Using only one Z limit switch (Z+ or Z-) if you need PWM spindle control
+  - Using on/off spindle control only (no PWM) if you need both Z limit switches
+  - Disabling homing for Z-axis or using a different homing strategy
 
 ### Analog Pins
 
