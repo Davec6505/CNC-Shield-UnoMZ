@@ -1,0 +1,98 @@
+# KiCad backup files
+*.bak
+*.bck
+*-bak
+*-backup
+*.kicad_pcb-bak
+*.kicad_sch-bak
+*.kicad_pro-bak
+*.kicad_prl
+*~
+_autosave-*
+*.tmp
+*.swp
+*.swo
+*-save.pro
+*-save.kicad_pcb
+*.000
+*.lck
+
+# KiCad cache and library files
+*-cache.lib
+*.dcm
+fp-info-cache
+sym-lib-table.backup
+fp-lib-table.backup
+
+# Gerber job files (optional - keep if needed)
+*.gbrjob
+
+# Manufacturing temp files
+*.zip
+
+# OS files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+desktop.ini
+
+# IDE and editor files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+.project
+.cproject
+.settings/
+
+# Python (if using Python scripts)
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+venv/
+ENV/
+env/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Temporary files
+tmp/
+temp/
+*.log
+
+# Documentation build files
+docs/_build/
+site/
+
+# Archives
+*.tar.gz
+*.zip
+*.rar
+*.7z
+
+# Test outputs
+test-output/
+*.test
+
+# Local configuration
+.env
+.env.local
+config.local.*
+
+# Generated files (uncomment if you don't want to track these)
+# hardware/gerber/*.gbr
+# hardware/gerber/*.drl
+
+# Keep these files
+!.gitignore
+!*.md
+!LICENSE
