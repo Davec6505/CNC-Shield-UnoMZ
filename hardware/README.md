@@ -2,6 +2,27 @@
 
 This directory contains all hardware design files for the CNC Shield for Arduino UnoMZ.
 
+## Current Status
+
+⚠️ **Project Stage**: Initial Release / Design Phase
+
+The KiCad files provided are **starter templates** with the basic project structure. The complete PCB design with full schematic, routing, and footprints is intended to be developed by the community or in future releases.
+
+**What's Included:**
+- KiCad project structure and configuration
+- Basic component definitions (Arduino headers, stepper drivers, connectors)
+- Board outline and dimensions
+- Pin assignments and net definitions
+
+**What's Needed for Manufacturing:**
+- Complete schematic with all connections
+- Footprint assignments for all components
+- Full PCB routing (traces, vias, copper pours)
+- Design Rule Check (DRC) validation
+- Final Gerber file generation
+
+Community contributions to complete the PCB design are welcome! See [CONTRIBUTING.md](../CONTRIBUTING.md).
+
 ## Directory Structure
 
 ```

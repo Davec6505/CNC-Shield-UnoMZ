@@ -2,6 +2,8 @@
 
 A CNC Shield expansion board designed for the Arduino UnoMZ, enabling 4-axis CNC machine control with support for stepper motor drivers, limit switches, spindle control, and coolant control.
 
+> **Project Status**: This is an initial release with comprehensive documentation and design specifications. The KiCad PCB files are starter templates. Community contributions to complete the hardware design are welcome!
+
 ## Features
 
 - **4-Axis Support**: Control up to 4 stepper motors (X, Y, Z, and A axes)*

@@ -8,28 +8,37 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ## [1.0.0] - 2025-12-24
 
 ### Added
-- Initial release of CNC Shield for Arduino UnoMZ
-- 4-axis stepper motor control (X, Y, Z, A)
+- Initial release of CNC Shield for Arduino UnoMZ project
+- Complete project documentation and specifications
+- Configurable 4-axis OR 3-axis + spindle control (pins D12/D13 shared)
 - Support for A4988, DRV8825, and compatible stepper drivers
 - 6 limit switch inputs (2 per axis for X, Y, Z)
-- Spindle control interface (enable, direction, PWM)
+- Spindle control interface (enable, direction, PWM in 3-axis mode)
 - Coolant control output
 - Z-axis probe input for auto-leveling
 - Emergency stop input
 - Microstepping configuration jumpers for each axis
 - Comprehensive documentation:
   - Assembly guide with step-by-step instructions
-  - Detailed pinout documentation
+  - Detailed pinout documentation with configuration modes
   - Bill of Materials (BOM) with component specifications
-  - GRBL configuration examples
-- KiCad project files:
-  - Schematic design
-  - PCB layout (69mm x 54mm, Arduino Uno compatible)
-  - Project configuration
+  - GRBL configuration examples for different machine types
+- KiCad starter project files:
+  - Project structure and configuration
+  - Basic schematic template with component definitions
+  - PCB template with board outline (69mm x 54mm)
+  - Pin assignments and net definitions
 - Gerber file generation documentation
 - Contributing guidelines
 - MIT License
 - Safety warnings and best practices documentation
+
+### Known Limitations
+- KiCad files are starter templates - full PCB design needs community completion
+- No footprint assignments in schematic yet
+- PCB routing not yet complete
+- Design not yet physically tested
+- Manufacturing Gerber files not yet generated
 
 ### Hardware Features
 - Arduino Uno shield form factor
