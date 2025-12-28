@@ -1,14 +1,14 @@
 Schematic and PCB Check Report
 ------------------------------
 
-Report Written:     11:30 Sunday, December 28, 2025
+Report Written:     08:22 Wednesday, December 24, 2025
 Project Path:       C:\Users\davec\GIT\CNC-Shield-UnoMZ\CNC-Shield-UnoMZ.prj
 Design Path:        C:\Users\davec\GIT\CNC-Shield-UnoMZ\CNC-Shield-UnoMZ.pcb
 Design Title:       
 Created:            12/24/2025 8:20:07 AM
-Last Saved:         12/28/2025 11:25:18 AM
-Editing Time:       4298 min
-Units:              mm (precision 3)
+Last Saved:         12/24/2025 8:21:23 AM
+Editing Time:       1 min
+Units:              thou (precision 0)
 
 
 Checking integrity of Schematic and Pcb designs in project "CNC-Shield-UnoMZ"
